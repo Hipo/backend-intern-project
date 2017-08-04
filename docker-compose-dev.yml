@@ -1,0 +1,32 @@
+version: "2"
+services:
+
+  web_app:
+    build:
+      context: .
+    image: web_app
+    command: tail -f /var/log/dmesg    # Added not to kill container so that it can be bashed.
+    volumes:
+      - ".:/app"
+    links:
+      - postgres
+      - redis
+    ports:
+      - "8000:8000"
+
+  postgres:
+    image: mdillon/postgis
+    environment:
+      - POSTGRES_DB=intern_app
+      - POSTGRES_USER=intern_app_dbu
+      - POSTGRES_PASSWORD=test
+    container_name: postgres
+    volumes:
+      - ".data/db:/var/lib/postgresql/data"
+
+  redis:
+    image: redis
+    volumes:
+      - ".data/redis:/data"
+    container_name: redis
+    command: redis-server --appendonly yes

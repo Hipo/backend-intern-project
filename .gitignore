@@ -1,0 +1,9 @@
+.data
+*.rdb
+*.log
+*.pot
+*.pyc
+*.swp
+.DS_Store
+.idea
+.coverage
