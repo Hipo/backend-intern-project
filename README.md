@@ -21,7 +21,6 @@ You should be bashed into the container. You must install django and django rest
 
 If you are doing this for the first time run the followings.
  - **python manage.py migrate** (This might raise an error. Wait a few seconds for database to be ready. Then run it again.)
- - **python manage.py createsuperuser**
 
 You can run **python manage.py runserver 0:8000** to run server.
     
